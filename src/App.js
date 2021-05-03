@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import DiaryCard from './Components/DiaryCard/DiaryCard';
+import DiaryHome from './Pages/DiaryHome/DiaryHome';
 
 function App() {
   return (
     <div className="App">
-      <DiaryCard />
+      <DiaryHome />
     </div>
   );
 }
