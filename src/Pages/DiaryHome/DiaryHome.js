@@ -4,21 +4,17 @@ import { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-
-
+import useFetch from '../../Hooks/useFetch';
+import DiaryList from '../../Components/DiaryList/DiaryList';
 
 const useStyles = makeStyles(() => ({
     root: {
-      flexGrow: 1
-      
-      
+      flexGrow: 1 
     },
     submit: {
         background: "rgba(32,116,240,0.3)",
         borderRadius:"25px",
-        maxHeight:'40px'
-       
-        
+        maxHeight:'40px'    
     },
     description:{
         background: "#02A9DE",
@@ -28,7 +24,6 @@ const useStyles = makeStyles(() => ({
     },
     btn:{
         color:"#2074F0"
-
     }
   }));
 
@@ -36,17 +31,28 @@ const DiaryHome = () => {
     const classes = useStyles();
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const {data:cards} = useFetch('http://localhost:8000/cards');   //for testing purposes
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(title,body);
+        const card = {title, body}
+            if (!(body === "") && !(title ==="")){
+            console.log('not empty');
+            fetch('http://localhost:8000/cards',
+            {   method: 'POST',
+                headers:{"Content-Type": "application/json"
+            },
+            body: JSON.stringify(card)
+        })
+        
+    }
         setTitle('');
         setBody('');
     }
 
     return ( 
-        <section className="Home">
-        <div  >
+        <div className="Home">
+        <div>
         <div className={classes.root}>
             <form noValidate autoComplete="off" >
                 <Grid container spacing={0}>
@@ -56,7 +62,8 @@ const DiaryHome = () => {
                             placeholder="Submit New"   
                             variant="outlined" 
                             fullWidth 
-                            required 
+                            type="text" 
+                            required
                             InputProps={{ className: classes.submit }}
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
@@ -65,8 +72,7 @@ const DiaryHome = () => {
                     <Grid item xs={12} sm={2} className="submit-btn" id="submit-btn1">
                         <button onClick={handleSubmit}> SUBMIT</button>
                     </Grid>
-                
-                     <Grid item xs={12} className="des-text">
+                    <Grid item xs={12} className="des-text">
                         <TextField
                             id="outlined-textarea"
                             placeholder="Enter Description"
@@ -74,6 +80,8 @@ const DiaryHome = () => {
                             variant="outlined"
                             InputProps={{ className: classes.description }}
                             fullWidth
+                            required
+                            type="text"
                             value={body}
                             onChange={(e) => setBody(e.target.value)}
                         />
@@ -84,8 +92,9 @@ const DiaryHome = () => {
                 </Grid>
             </form> 
         </div>
+        {cards && <DiaryList cards={cards}/>}
         </div>
-        </section>
+        </div>
     );
 }
  
