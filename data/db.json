@@ -1,0 +1,14 @@
+{
+  "cards": [
+    {
+      "title": "this this first card",
+      "body": "i m adding the first card. Database is empty before adding this one",
+      "id": 1
+    },
+    {
+      "title": "sfsefese",
+      "body": "fsgrrrrrrrrrrrrrrrrr",
+      "id": 2
+    }
+  ]
+}

@@ -6,14 +6,14 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import propTypes from 'prop-types';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 275,
+        
         backgroundColor:"#B9E9FF",
         textAlign:"left",
-        borderRadius:"20px"                    //will be setting when using grids for more cards
-      
+        borderRadius:"20px"                    //will be setting when using grids for more cards 
     },
     pos: {
         marginBottom: 12,
@@ -23,33 +23,30 @@ const useStyles = makeStyles({
     }
   });
 
-const DiaryCard = () => {
+const DiaryCard = ({card}) => {
     const classes = useStyles();
-
-    const description = 'The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced 2'; //102 charcters for testing
-    const truncatedDescription = (()=>{
-        if (description.length > 100){
-            return (description.substring(0,100)+'...')
+    
+    const truncatedDescription = ((des)=>{
+        if (des.length > 100){
+            return (des.substring(0,100)+'...')
         }
         else{
-            return description;
+            return des;
         }
     });
 
-    
-
-    return ( 
-        <div className="card-container">
+    return (
+        <div className="card-container" >
             <Card className={classes.root}>
                 <CardContent className="card-content" textOverflow="ellipsis">
                     <Typography variant="h5" component="h2">
-                        Title
+                        {card.title}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                        Subtitle
+                        {card.author}
                     </Typography>
                     <Typography variant="body2" component="p" style={{ wordWrap: 'break-word' }} >
-                        {truncatedDescription()}
+                        {truncatedDescription(`${card.body}`)}
                     </Typography>
                     
                 </CardContent>
@@ -57,8 +54,12 @@ const DiaryCard = () => {
             <Button size="small" className={classes.btn}>Show More</Button>
         </CardActions>
         </Card>
+    
     </div>
      );
 }
+DiaryCard.propTypes = {
+    card:propTypes.object.isRequired
+};
  
 export default DiaryCard;
