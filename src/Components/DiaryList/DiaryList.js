@@ -7,13 +7,15 @@ import Grid from '@material-ui/core/Grid';
 const DiaryList = ({cards}) => {
   
     return (
-        <Grid container spacing={0} className="card-list">
+      <div className="card-list">
+        <Grid container spacing={0}>
             {cards.map(card => (
-                <Grid item xs={12} sm={4} className="card-preview" key={card.id} >
+                <Grid item xs={12} sm={6} md={3} className="card-preview" key={card.id} >
                   <DiaryCard card={card} />
               </Grid>
             ))}
       </Grid>
+      </div>
     ); 
   };
   DiaryList.propTypes = {

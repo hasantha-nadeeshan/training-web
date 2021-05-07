@@ -1,14 +1,59 @@
 {
   "cards": [
     {
-      "title": "this this first card",
-      "body": "i m adding the first card. Database is empty before adding this one",
+      "title": "wadfsafs",
+      "body": "dgdfgdf",
       "id": 1
     },
     {
-      "title": "sfsefese",
-      "body": "fsgrrrrrrrrrrrrrrrrr",
+      "title": "were",
+      "body": "dgfgdfgfgdf",
       "id": 2
+    },
+    {
+      "title": "fdgdfg",
+      "body": "dfhgfffffffffffff",
+      "id": 3
+    },
+    {
+      "title": "dfhhhhhhhhhh",
+      "body": "hhhfggggggggggggggg",
+      "id": 4
+    },
+    {
+      "title": "fhhhhhhhhhhhhhhhhhh",
+      "body": "fhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+      "id": 5
+    },
+    {
+      "title": "hfhffg",
+      "body": "fg",
+      "id": 6
+    },
+    {
+      "title": "rtretr",
+      "body": "tretretre",
+      "id": 7
+    },
+    {
+      "title": "rtretr",
+      "body": "retrt",
+      "id": 8
+    },
+    {
+      "title": "rtret",
+      "body": "rtrert",
+      "id": 9
+    },
+    {
+      "title": "trettttttttttt",
+      "body": "rrrrrrrrrr",
+      "id": 10
+    },
+    {
+      "title": "rrrrrrrrrrrrrrrrrrrrrrrrt",
+      "body": "wreeeeeeeeeeq",
+      "id": 11
     }
   ]
 }
