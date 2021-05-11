@@ -5,7 +5,7 @@ import DiaryCard from '../../Components/DiaryCard/DiaryCard';
 import Grid from '@material-ui/core/Grid';
 
 const DiaryList = ({cards}) => {
-  
+
     return (
       <div className="card-list">
         <Grid container spacing={0}>

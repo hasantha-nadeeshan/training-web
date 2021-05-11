@@ -1,13 +1,12 @@
 import React from 'react';
 import './DiaryHome.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import useFetch from '../../Hooks/useFetch';
 import DiaryList from '../DiaryList/DiaryList';
 import { InputBase } from '@material-ui/core';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import {getAllCards,addNewCard } from '../../redux/actions/actions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,25 +48,25 @@ const useStyles = makeStyles((theme) => ({
 
 const DiaryHome = () => {
     const classes = useStyles();
+    const dispatch =useDispatch();
+    const data =useSelector((state)=>state.diaryCardReducer);
     const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const {data:cards} = useFetch('http://localhost:8000/cards');   //for testing purposes
+    const [description, setdescription] = useState('');
+    
+    useEffect(() => {
+        dispatch(getAllCards());
+    }, [dispatch]);
+
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const card = {title, body}
-            if (!(body === "") && !(title ==="")){
-            console.log('not empty');
-            fetch('http://localhost:8000/cards',
-            {   method: 'POST',
-                headers:{"Content-Type": "application/json"
-            },
-            body: JSON.stringify(card)
-        })
-        
-    }
+        dispatch(getAllCards());
+        const card = {title, description, user:'hazi'}
+            if (!(description === "") && !(title ==="")){
+                 dispatch(addNewCard(card));
+            }
         setTitle('');
-        setBody('');
+        setdescription('');
     }
 
     return ( 
@@ -104,8 +103,8 @@ const DiaryHome = () => {
                                     fullWidth
                                     required
                                     type="text"
-                                    value={body}
-                                    onChange={(e) => setBody(e.target.value)}
+                                    value={description}
+                                    onChange={(e) => setdescription(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} className="submit-btn" id="submit-btn2">
@@ -114,7 +113,7 @@ const DiaryHome = () => {
                         </Grid>
                     </form> 
                 </div>
-                 {cards && <DiaryList cards={cards}/>}
+                 {data.cards && <DiaryList cards={data.cards}/>}
             </div>
     );
 }

@@ -42,11 +42,14 @@ const DiaryCard = ({card}) => {
                     <Typography variant="h5" component="h2">
                         {card.title}
                     </Typography>
+                    <Typography  component="h6" style={{color:'#808080'}}>
+                        {card.user}
+                    </Typography>
                     <Typography className={classes.pos} color="textSecondary">
                         {card.author}
                     </Typography>
                     <Typography variant="body2" component="p" style={{ wordWrap: 'break-word' }} >
-                        {truncatedDescription(`${card.body}`)}
+                        {truncatedDescription(`${card.description}`)}
                     </Typography>
                     
                 </CardContent>
