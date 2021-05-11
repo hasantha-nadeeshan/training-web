@@ -1,5 +1,6 @@
 import React from 'react';
 import './DiaryCard.css';
+import {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -25,15 +26,28 @@ const useStyles = makeStyles({
 
 const DiaryCard = ({card}) => {
     const classes = useStyles();
-    
+    const [showMore,setShowMore] = useState(true);
+    const [displayMoreLess,setDisplayMoreLess] = useState('Show More');
+
     const truncatedDescription = ((des)=>{
-        if (des.length > 100){
+        if ((des.length > 100) && showMore){
             return (des.substring(0,100)+'...')
         }
         else{
             return des;
         }
     });
+
+    const showHandler = ()=>{
+        if(showMore){
+            setDisplayMoreLess('Show Less');
+            setShowMore(false);
+        }
+        else{
+            setDisplayMoreLess('Show More');
+            setShowMore(true);
+        }
+    }
 
     return (
         <div className="card-container" >
@@ -54,7 +68,7 @@ const DiaryCard = ({card}) => {
                     
                 </CardContent>
         <CardActions className="card-btn-bar">
-            <Button size="small" className={classes.btn}>Show More</Button>
+            <Button size="small" className={classes.btn} onClick={showHandler}>{displayMoreLess}</Button>
         </CardActions>
         </Card>
     
