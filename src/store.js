@@ -1,7 +1,7 @@
 import {fork} from "redux-saga/effects";
-import { watchGetAllCards, watchAddNewCard} from "./flow";
+import { watchGetAllCards, watchAddNewCard} from './redux/sagas/flow';
 
-export default function* root() {
+export default function* rootSaga() {
     yield fork(watchGetAllCards);
     yield fork(watchAddNewCard);
 }

@@ -52,7 +52,7 @@ const DiaryCard = ({card}) => {
     return (
         <div className="card-container" >
             <Card className={classes.root}>
-                <CardContent className="card-content" textOverflow="ellipsis">
+                <CardContent className="card-content" textoverflow="ellipsis">
                     <Typography variant="h5" component="h2">
                         {card.title}
                     </Typography>

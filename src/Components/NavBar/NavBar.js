@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot:{
-    color:'white',
+   // color:'white',
     fontSize:14,
     
   },

@@ -10,7 +10,7 @@ const DiaryList = ({cards}) => {
       <div className="card-list">
         <Grid container spacing={0}>
             {cards.map(card => (
-                <Grid item xs={12} sm={6} md={3} className="card-preview" key={card.id} >
+                <Grid item xs={12} sm={6} md={3} className="card-preview" key={card.created} >
                   <DiaryCard card={card} />
               </Grid>
             ))}
